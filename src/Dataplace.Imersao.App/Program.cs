@@ -30,16 +30,19 @@ namespace Dataplace.Imersao.App
             var builder = Dataplace.Core.DataplaceApplication.CreateBuilder(null)
                 .UseAppName("SALESAPP")
                 .UseLayout(AppLayoutEnum.Basic)
-                .UseMediatR(executingAssembly);
+                .UseMediatR(executingAssembly)
+                .OnCloseApp((closeData) =>
+                {
+                    dpLibrary05.mGenerico.SymphonyApp.MainForm.Close();
+                });
 
-            ConfiguurationService(builder.Services);
+            ConfigurationService(builder.Services);
 
             var app = builder.Build();
             app.Run<MainForm>();
-
         }
 
-        private static void ConfiguurationService(IServiceCollection services)
+        private static void ConfigurationService(IServiceCollection services)
         {
             services.AddSingleton<MainForm>();
 

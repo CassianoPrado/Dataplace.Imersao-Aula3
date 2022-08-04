@@ -85,13 +85,6 @@ namespace Dataplace.Imersao.Core.Application.Orcamentos.Queries
 
             return _dataAccess.Connection.Query<OrcamentoViewModel>(cmd);
 
-
-            //var text = "45";
-            var text = "45 OR 1 = 1";
-            var sql2 = $"DELETE FROM orcamento WHERE numOrcamento = {text}";
-
-            // DELETE FROM orcamento WHERE numOrcamento = 42
-            // DELETE FROM orcamento WHERE numOrcamento =   45 OR 1 = 1
         }
 
         public async Task<OrcamentoViewModel> Handle(OrcamentoRefreshQuery query, CancellationToken cancellationToken)
